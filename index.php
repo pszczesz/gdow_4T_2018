@@ -9,5 +9,8 @@
         <div>
             <a href="cw1/cw1.php">Ćwiczenie 1</a>
         </div>
+        <div>
+            <a href="cw2/cw2.php">Ćwiczenie 2</a>
+        </div>
     </body>
 </html>
