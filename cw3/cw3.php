@@ -29,5 +29,24 @@
         echo "<p>suma = {$suma}</p>";   
         
         ?>
+        <h2>Pętla do{....}while(...);</h2>
+        <?php
+        $losowa=0;
+        $licznik=0;
+        $suma=0;
+        do{
+           $losowa = rand(0, 50);
+           echo $losowa.' '; 
+           if($losowa!=0){
+               $licznik++;
+               $suma+=$losowa;               
+           }
+        }while($losowa!=0);
+        echo "<p>Ilość losowań: {$licznik}</p>\n";
+        echo "<p>Suma: {$suma}</p>\n";
+        if($licznik!=0){
+            echo "<p>Średnia: ".round($suma/$licznik,2)."</p>\n";
+        }
+        ?>
     </body>
 </html>
