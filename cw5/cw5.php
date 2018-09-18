@@ -6,9 +6,9 @@
         <title></title>
     </head>
     <body>
-        <pre>
+        
             <?php
-            $colors = array("biały", "żółty", "zielony");
+            $colors = array("biały", "żółty", "zielony","seledynowy");
             $cars = ["fiat", "bmw", "renaut", "ford",[5,8,9]];
             print_r($cars);
             var_dump($colors);
@@ -24,9 +24,34 @@
                 echo $item.'<br>';
             }
             
-            //todo
+            function SelectGen(array $dane){
+                $html = "<select id='kol'>\n";
+                foreach ($dane as $color) {
+                    $html .= "<option value='{$color}'>{$color}</option>\n";
+                }
+                $html .= "</select>\n";
+                return $html;
+            }
+            $colors2 = ["white"=>"biały","yellow"=>"żółty","grey"=>"szary",
+                "red"=>"czerwony","blue"=>"niebieski"];
+            function SelectGen2(array $dane){
+                 $html = "<select id='kol2'>\n";
+                foreach ($dane as $color=>$kolor) {
+                    $html .= "<option value='{$color}'>{$kolor}</option>\n";
+                }
+                $html .= "</select>\n";
+                return $html;
+            }
+            $colors2["black"]="czarny";
+            $colors2[]="inny";
             echo SelectGen($colors);
+            echo SelectGen2($colors2);
             ?>
+        <script type="text/javascript">
+          document.getElementById("kol2").onchange = function (){
+              document.body.style.backgroundColor = this.value;
+          };
+        </script>
     </body>
-        </pre>
+        
 </html>
