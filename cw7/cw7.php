@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Formularze - Wstęp</h1>
-        <form>
+        <form method="post">
             <fieldset>
                 <label for="a">Poda a</label>
                 <input type="number" id="a" name="a"/><br>
@@ -16,10 +16,10 @@
             </fieldset>
         </form>
         <?php
-        if(isset($_GET['a']) && isset($_GET['b'])){
-          //  var_dump($_GET);
-            $a = $_GET['a'];
-            $b = $_GET['b'];
+        if(isset($_POST['a']) && isset($_POST['b'])){
+            var_dump($_POST);
+            $a = $_POST['a'];
+            $b = $_POST['b'];
             echo "<p>{$a} + {$b} = " . ($a + $b) . "</p>\n";
         }
         
