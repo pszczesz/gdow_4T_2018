@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">        
+    </head>
+    <body>
+        <form action="zapisz.php" method="post">
+            <fieldset>
+                <div class="line">
+                    <label for="imie">Imię</label>
+                    <input type="text" id="imie" name="imie"/>
+                </div>
+                <div class="line">
+                    <label for="nazwisko">Nazwisko</label>
+                    <input type="text" id="nazwisko" name="nazwisko"/>
+                </div>
+                <div class="line">
+                    <label for="klasa">Klasa</label>
+                    <select id="klasa" name="klasa">
+                        <option value="1A">1A</option>
+                        <option value="1B">1B</option>
+                        <option value="1C">1C</option>
+                        <option value="1D">1D</option>
+                    </select>
+                </div>
+                <div class="line">
+                    <label>Płeć</label>
+                    kobieta: <input type="radio" name="plec" value="kobieta" checked="" />
+                    mężczyzna: <input type="radio" name="plec" value="mężczyzna" />
+                </div>
+                <div class="line">
+                    <label>Zainteresowania</label><br>
+                    <input type="checkbox" name="zaint[]" 
+                           value="Muzyka"/>Muzyka<br>
+                    <input type="checkbox" name="zaint[]" 
+                           value="Film"/>Film<br>
+                    <input type="checkbox" name="zaint[]" 
+                           value="Taniec"/>Taniec<br>
+                    <input type="checkbox" name="zaint[]" 
+                           value="Teatr"/>Teatr<br>
+                    <input type="checkbox" name="zaint[]" 
+                           value="Książki"/>Książki<br>
+                </div>
+                <input type="submit" value="Zapisz"/>
+            </fieldset>
+        </form>
+    </body>
+</html>
