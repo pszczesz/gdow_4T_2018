@@ -42,8 +42,19 @@
                     <input type="checkbox" name="zaint[]" 
                            value="Książki"/>Książki<br>
                 </div>
+                <div>
+                    <label>Zgoda na prztwarzanie danych osobowych</label>
+                    <input type="checkbox" name="accept" id="accept" />
+                </div>
                 <input type="submit" value="Zapisz"/>
             </fieldset>
         </form>
+        <script type="text/javascript">
+            window.onload = function(){
+              document.forms[0].onsubmit = function (){
+                  return document.getElementById("accept").checked;
+              };  
+            };
+            </script>
     </body>
 </html>
