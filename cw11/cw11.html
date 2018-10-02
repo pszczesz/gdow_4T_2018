@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">       
+        <style>
+            .line{margin: 10px;}
+            label{display: inline-block;width: 150px; text-align: right;}
+        </style>
+    </head>
+    <body>
+       <form action="zapisz.php" method="post">
+            <fieldset>
+                <div class="line">
+                    <label for="imie">Imię</label>
+                    <input type="text" id="imie" name="imie"/>
+                </div>
+                <div class="line">
+                    <label for="nazwisko">Nazwisko</label>
+                    <input type="text" id="nazwisko" name="nazwisko"/>
+                </div>
+                <div class="line">
+                    <label for="wiek">Wiek</label>
+                    <input type="number" id="wiek" name="wiek"/>
+                </div>
+                <input type="submit" value="Zapisz"/>
+            </fieldset>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+Adam|Nowak|23
+Adam|Nowak|23
+Maurycy|Tytek|12
+Test1|Teścik|45
+Tomasz|Bomasz|22
+Franek|Dzbanek|12
