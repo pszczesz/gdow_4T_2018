@@ -17,4 +17,20 @@ class Book{
         $html .= "Ilość stron: {$this->pages} opis: {$this->description}</div>\n";
         return $html;
     }
+    public function getTitle(){
+        return $this->title;
+    }
+    public function getAuthor() {
+        return $this->author;
+    }
+
+    public function getPages() {
+        return $this->pages;
+    }
+
+    public function getDescription() {
+        return $this->description;
+    }
+
+
 }
