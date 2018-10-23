@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Nowa wycieczka</title>
+        <style>
+            label{display: inline-block; width: 120px; text-align:
+                      right;padding-left: 5px;}
+            div.line{margin: 10px;}
+        </style>
+    </head>
+    <body>
+        <h1>Nowa wycieczka</h1>
+        <div>
+            <form action="addNewW.php" method="post">
+                <fieldset>
+                    <legend>Informacje o wycieczce</legend>
+                    <div class="line">
+                    <label for="miejsce">Miejsce</label>
+                    <input type="text" id="miejsce" name="miejsce"/>
+                </div>
+                <div class="line">
+                    <label for="cena">Cena</label>
+                    <input type="text" id="cena" name="cena"/>
+                </div>
+                <div class="line">
+                    <label for="data">Data</label>
+                    <input type="date" id="data" name="data"/>
+                </div>
+                <div class="line">
+                    <label for="ilMiejsc">Ilość miejsc</label>
+                    <input type="number" id="ilMiejsc" name="ilMiejsc" min="1" max="100"/>
+                </div>
+               
+                <input type="submit" value="Zapisz"/>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

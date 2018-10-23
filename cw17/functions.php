@@ -32,8 +32,20 @@ function wycieczkiToTab(array $dane){
     $lp=0;
     foreach ($dane as $row) {
         $html .= "<tr><td>". (++$lp)."</td>"
-                . "<td>{$row['miejsce']}</td><td>{$row['cena']}</td>"
-                . "<td>{$row['iloscMiejsc']}</td><td>{$row['data']}</td></tr>\n";
+                . "<td>{$row['miejsce']}</td><td class='right'>{$row['cena']}</td>"
+                . "<td class='right'>{$row['iloscMiejsc']}</td><td class='right'>{$row['data']}</td></tr>\n";
     }
     return $html."</table>";
+}
+
+function insertWycieczka(array $dane){
+     $conn = getConnection();
+    
+    if($conn==null){
+        return false;
+    }
+    $sql = "INSERT INTO wycieczki(miejsce,cena,iloscMiejsc,data) "
+            . "VALUES('{$dane[0]}',{$dane[1]},{$dane[2]},'{$dane[3]}')";
+    echo $sql;        
+   // $result = $conn->query($sql);
 }
