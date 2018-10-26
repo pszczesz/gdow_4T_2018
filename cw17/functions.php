@@ -33,9 +33,13 @@ function wycieczkiToTab(array $dane){
     foreach ($dane as $row) {
         $html .= "<tr><td>". (++$lp)."</td>"
                 . "<td>{$row['miejsce']}</td><td class='right'>{$row['cena']}</td>"
-                . "<td class='right'>{$row['iloscMiejsc']}</td><td class='right'>{$row['data']}</td>"
-                . "<td><a href='zapisz.php?id={$row['id']}'>Wybierz</a>"
-                . " <a href='usun.php?id={$row['id']}'>Usuń</a></td></tr>\n";
+                . "<td class='right'>{$row['iloscMiejsc']}</td>"
+                . "<td class='right'>{$row['data']}</td>"
+                . "<td> <a href='usun.php?id={$row['id']}'>Usuń</a>";
+         if(intval($row['iloscMiejsc'])>0){
+             $html .=" <a href='zapisz.php?id={$row['id']}'>Wybierz</a>";
+         }       
+         $html .= "</td></tr>\n";     
     }
     return $html."</table>";
 }
@@ -54,9 +58,7 @@ function insertWycieczka(array $dane){
 }
 function deleteWycieczka($id){
      $conn = getConnection();
-    if($conn==null){        
-        return false;
-    }
+    if($conn==null){    return false; }
     $id= intval($_GET['id']);
     $sql1 = "SELECT count(*) FROM uczestnicy where wycieczkaid={$id}";
     $result = $conn->query($sql1);
