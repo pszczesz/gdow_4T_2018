@@ -7,9 +7,15 @@ if(isset($_POST['miejsce'])){
     $data = $_POST['data'];
     $iloscMiejsc = intval($_POST['ilMiejsc']);
     if($miejsce!='' && $cena>0 && $iloscMiejsc>0){
-        insertWycieczka([$miejsce,$cena,$iloscMiejsc,$data]);
+        if(insertWycieczka([$miejsce,$cena,$iloscMiejsc,$data])){
+            header("Location: cw17.php");
+        }else{
+        header("Location: dodajW.html");
+        }
     }else{
         echo "error";
+        header("Location: dodajW.html");
     }
+   
 }
 
