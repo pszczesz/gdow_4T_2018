@@ -106,7 +106,8 @@ function getAllUczestnicy($id) {
 function uczestnicyToList(array $dane){
     $html = "<ul>\n";
     foreach ($dane as $item) {
-        $html .= "<li>{$item['nazwisko']} {$item['imie']}</li>\n";
+        $html .= "<li>{$item['nazwisko']} {$item['imie']} "
+        . "<a href='usunUczestnika.php?id={$item['id']}'>Usuń</a></li>\n";
     }
     return $html . "</ul>";
 }
