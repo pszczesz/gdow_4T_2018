@@ -15,12 +15,14 @@ require_once 'functions.php';
 if(isset($_GET['id'])){
     $id = intval($_GET['id']);
     $w = getWycieczka($id);
+    $iloscMiejsc = intval($w['iloscMiejsc']);
     echo "<h2>Zapis na wycieczkę</h2><p>"
     . "Miejsce: {$w['miejsce']}</p>"
     . "<p> cena: {$w['cena']} zł </p>"
     . "<p>ilość miesc: {$w['iloscMiejsc']}</p>\n";
     
-    echo<<<TEXT
+    //echo<<<TEXT
+    ?>
     <div>
             <form action="dodajUczestnika.php" method="post">
                 <fieldset>
@@ -36,19 +38,24 @@ if(isset($_GET['id'])){
                         <span class="error"></span>
                         <input type="hidden" name="wycieczkaid"
                                value="<?php echo $id?>"/>
+                        <input type="hidden" name="iloscMiejsc"
+                               value="<?php echo $iloscMiejsc?>"/>
                     </div>
                     <input type="submit" value="Zapisz na wycieczkę">
                 </fieldset>
             </form></div>
-TEXT;
+<?php
     
 }else{
-    echo<<<TEXT
+   // echo<<<TEXT
+    ?>
+    
      <div>
             Brak zapisów na wycieczkę
             <a href="cw17.php">Powrót do listy wycieczek</a>
-        </div>   
-TEXT;
+        </div>  
+        <?php
+//TEXT;
     
 }
 ?>
