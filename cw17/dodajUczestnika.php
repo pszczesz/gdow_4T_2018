@@ -22,6 +22,7 @@ if(isset($_POST['imie'])){
       // echo $sql2."<br>"; 
       $conn->query($sql1);
       $conn->query($sql2);
+      $conn->close();
       header("Location: cw17.php");
     }
     
