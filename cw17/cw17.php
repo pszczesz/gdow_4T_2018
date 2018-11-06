@@ -20,7 +20,7 @@
                 ?>
                 <label for="miejsce">Wybierz miejsce wycieczki: </label>
                 <input type="text" id="miejsce" name="miejsce" 
-                       value="<?php echo $szukane?>"/>
+                       value="<?php echo $szukane;?>"/>
                 <input type="submit" value="Szukaj"/>
             </form>
         </p>
@@ -31,15 +31,30 @@
         }else{
             $miejsce = "";
         }
-      
+        if(isset($_POST['selMiejsca'])){
+            $miejsce2 = trim($_POST['selMiejsca']);
+        }else{
+            $miejsce2 = "";
+        }
+        
         $dane =  getAllWycieczki($miejsce);
+        $dane2 = getAllWycieczki($miejsce2);
         $miejsca = getOnlyMiejsca();
-      //  echo formWithSelect($miejsca);
+        echo formWithSelect($miejsca);
         //print_r($miejsca);
         echo wycieczkiToTab($dane);
+        echo "<p>Dla selecta tabelka</p>\n";
+        echo wycieczkiToTab($dane2);
+       
         ?>
         <div>
             <a href="dodajW.html">Dodaj nową wycieczkę</a>
         </div>
+        <script type="text/javascript">
+            document.querySelector("#selMiejsca").value = "<?php echo $miejsce2;?>";
+            document.querySelector("#selMiejsca").onchange = function(){
+                document.querySelector("#selForm").submit();
+            }
+        </script>
     </body>
 </html>

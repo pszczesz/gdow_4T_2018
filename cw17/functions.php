@@ -16,7 +16,7 @@ function getOnlyMiejsca(){
     if ($conn == null) {
         return $dane;
     }
-    $sql = "SELECT distinct miejsce FROM wycieczki";
+    $sql = "SELECT distinct miejsce FROM wycieczki order by miejsce";
    // echo $sql;
     $result = $conn->query($sql);
     //var_dump($result);
@@ -126,4 +126,15 @@ function uczestnicyToList(array $dane){
         . "<a href='usunUczestnika.php?id={$item['id']}'>Usuń</a></li>\n";
     }
     return $html . "</ul>";
+}
+function formWithSelect(array $dane){
+    $html = "<p>\n<form id='selForm' method='post'>\n"
+            . "<label for='selMiejsca'>Wybierz miejsce wycieczki: </label>"
+            . "\n<select id='selMiejsca' name='selMiejsca'>\n"
+            . "\t<option value='' selected='selected'>wszystkie miejsca</option>";
+    foreach ($dane as $m){
+        $html .= "\t<option value='{$m}'>{$m}</option>\n";
+    }
+    $html .= "</select>\n</form>\n</p>\n";
+    return $html;
 }
