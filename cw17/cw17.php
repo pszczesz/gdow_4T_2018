@@ -59,8 +59,7 @@
             let red = Math.floor(Math.random() * 256);
             let green = Math.floor(Math.random() * 256);
             let blue = Math.floor(Math.random() * 256);
-            let color = "rgb(" + red + "," + green + "," + blue + ")";
-            console.log(color);
+            let color = "rgb(" + red + "," + green + "," + blue + ")";           
             document.querySelector("h1").style.color = color;
         }, 2000);
 
