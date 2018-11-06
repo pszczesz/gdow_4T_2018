@@ -10,14 +10,30 @@ function getConnection() {
     $conn->query("SET NAMES utf8");
     return $conn;
 }
-
-function getAllWycieczki() {
+function getOnlyMiejsca(){
+     $conn = getConnection();
+    $dane = [];
+    if ($conn == null) {
+        return $dane;
+    }
+    $sql = "SELECT distinct miejsce FROM wycieczki";
+   // echo $sql;
+    $result = $conn->query($sql);
+    //var_dump($result);
+    while ($row = $result->fetch_assoc()) {
+        $dane[] = $row['miejsce'];
+    }
+    $conn->close();
+    return $dane;
+}
+function getAllWycieczki($miejsce="") {
     $conn = getConnection();
     $dane = [];
     if ($conn == null) {
         return $dane;
     }
-    $sql = "SELECT * FROM wycieczki";
+    $sql = "SELECT * FROM wycieczki where miejsce like '{$miejsce}%'";
+   // echo $sql;
     $result = $conn->query($sql);
     //var_dump($result);
     while ($row = $result->fetch_assoc()) {
