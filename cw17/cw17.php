@@ -54,7 +54,7 @@
         document.querySelector("#selMiejsca").value = "<?php echo $miejsce2; ?>";
         document.querySelector("#selMiejsca").onchange = function () {
             document.querySelector("#selForm").submit();
-        }
+        };
         setInterval(function () {
             let red = Math.floor(Math.random() * 256);
             let green = Math.floor(Math.random() * 256);
