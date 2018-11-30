@@ -23,6 +23,7 @@ function getAllBooks(){
             $dane[] = $row;
         }
     }
+    $conn->close();
     return $dane;
 }
 function booksToTable(array $books){
@@ -52,5 +53,6 @@ function getBookById($id){
     if($result){
         $dane = $result->fetch_assoc();
     }
+    $conn->close();
     return $dane;
 }

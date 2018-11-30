@@ -21,12 +21,13 @@
             $id = intval($_GET['id']);
            require_once 'functions.php';
            $book = getBookById($id);
+           $d = date('Y-m-d');
           // $now = date
-           $date = date('Y-m-d', strtotime($Date. ' + 2 days'));
+           $date = date('Y-m-d', strtotime($d. ' + 14 days'));
            ?>
            
         <div>
-            <form method="post">
+            <form method="post" action="wypInsert.php">
                  <fieldset>
                      <legend>Wypożyczanie książki <span class="wyr">"<?php echo $book['tytul']?>"</span></legend>
                     <div class="line">
@@ -39,7 +40,7 @@
                 </div>
                 <div class="line">
                     <label for="data">Data Zwrotu</label>
-                    <input type="date" id="data" name="data" value="<?php echo date("Y-m-d")?>"/>
+                    <input type="date" id="data" name="data" value="<?php echo $date?>"/>
                 </div>
                     <input type="hidden" value="<?php echo $book['id']?>" name="ksiazkaId" id="ksiazkaId"/>
                
@@ -49,8 +50,8 @@
         </div>
         
         <?php
-           
-        }
+        }   
+        
         ?>
         
     </body>
