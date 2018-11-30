@@ -1,0 +1,16 @@
+table{
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 50px;
+}
+th{
+    background-color: #99ff99;
+    color: #006633;
+}
+th,td{
+    border: solid 1px #006633;
+    padding: 5px;
+}
+tr.wyp{
+    background-color: #ff9999;
+}
