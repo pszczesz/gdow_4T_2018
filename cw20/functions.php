@@ -64,7 +64,8 @@ function gettAllCzyt(){
     if($conn==null){
         return [];
     }
-    $sql = "SELECT imie,nazwisko,dataZwrotu,tytul FROM czytelnicy "
+    $sql = "SELECT czytelnicy.id,imie,nazwisko,dataZwrotu,tytul,"
+            . "DATEDIFF(dataZwrotu,now()) as dni FROM czytelnicy "
             . "INNER JOIN ksiazki on ksiazki.id=czytelnicy.ksiazkaid";
     $result = $conn->query($sql);
     $dane = [];
@@ -79,20 +80,42 @@ function gettAllCzyt(){
 function czytToTable(array $dane){
      $html = "<table>";
     $html .= "<tr><th>Lp</th><th>Imię</th><th>Nazwisko</th>"
-            . "<th>Tytuł</th><th>Data zwrotu</th><th>Ilość dni</th></tr>";
+            . "<th>Tytuł</th><th>Data zwrotu</th><th>Ilość dni</th>"
+            . "<th>Ilość dni SQL</th><th></t></tr>";
     $lp = 0;
     foreach ($dane as $item) {
+        $wyr = $item['dni']<=0 ? "class='wyp'" : "";
         $dnow = new DateTime();
         $dzwrotu = new DateTime($item['dataZwrotu']);
         $interval = $dzwrotu->diff($dnow);
         $iloscDni = $interval->days;
-        $html .= "<tr>"
+        $html .= "<tr {$wyr}>"
               .'<td>'.(++$lp).'</td>'
               ."<td>{$item['imie']}</td>"
               . "<td>{$item['nazwisko']}</td>"
               . "<td>{$item['tytul']}</td>"
               . "<td>{$item['dataZwrotu']}</td>"
-              . "<td>{$iloscDni}</td></tr>";
+              . "<td>{$iloscDni}</td>"
+              . "<td>{$item['dni']}</td>"
+              . "<td><a href='usun.php?id={$item['id']}'>Oddaj</a></td></tr>";
     }
     return $html."</table>";
+}
+function usunCzytelnik($id,$ksiazkaid){
+    $conn = getConnection();
+    if($conn==null)       { return ;}
+    $sql1 = "DELETE FROM czytelnicy WHERE ksiazkaid={$id}";
+    $sql2 = "UPDATE ksiazki SET stan=b'1' where id={$ksiazkaid}";
+    $result1 = $conn->query($sql1);
+    $result2 = $conn->query($sql2);
+   $conn->close();
+}
+function getKsiazkaId($id){
+    $conn = getConnection();
+    if($conn==null)       { return ;}
+    $sql = "SELECT ksiazkaid from czytelnicy WHERE id={$id}";
+    $result=$conn->query($sql);
+    $ksiazkaid = $result->fetch_assoc()['ksiazkaid'];
+    $conn->close();
+    return $ksiazkaid;
 }
