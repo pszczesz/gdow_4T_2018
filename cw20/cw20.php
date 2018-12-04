@@ -13,5 +13,8 @@
          $dane = getAllBooks();
          echo booksToTable($dane);
         ?>
+        <div>
+            <a href="allBooks.php">Wyświetl wypożyczenia</a>
+        </div>
     </body>
 </html>

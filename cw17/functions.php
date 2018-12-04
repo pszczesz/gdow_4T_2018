@@ -1,7 +1,7 @@
 <?php
 
 function getConnection() {
-    $conn = new mysqli("localhost", "root", "", "4ti_2018_biuro");
+    $conn = new mysqli("localhost", "root2", "", "4ti_2018_biuro");
     if ($conn->connect_errno != 0) {
         echo "error: " . $conn->connect_error;
         // die("error");

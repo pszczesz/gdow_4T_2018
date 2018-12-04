@@ -1,6 +1,6 @@
 <?php
 function getConnection(){
-    $conn = new mysqli("localhost", "root", "", "bib_4t_2018");
+    $conn = new mysqli("localhost", "root2", "", "bib_4t_2018");
     if($conn->connect_errno!=0){
         return null;
     }
@@ -55,4 +55,44 @@ function getBookById($id){
     }
     $conn->close();
     return $dane;
+}
+
+function gettAllCzyt(){
+     $conn = getConnection();
+   // var_dump($conn);
+    $dane = [];
+    if($conn==null){
+        return [];
+    }
+    $sql = "SELECT imie,nazwisko,dataZwrotu,tytul FROM czytelnicy "
+            . "INNER JOIN ksiazki on ksiazki.id=czytelnicy.ksiazkaid";
+    $result = $conn->query($sql);
+    $dane = [];
+    if($result){
+        while($row=$result->fetch_assoc()){
+            $dane[] = $row;
+        }
+    }
+    $conn->close();
+    return $dane;
+}
+function czytToTable(array $dane){
+     $html = "<table>";
+    $html .= "<tr><th>Lp</th><th>Imię</th><th>Nazwisko</th>"
+            . "<th>Tytuł</th><th>Data zwrotu</th><th>Ilość dni</th></tr>";
+    $lp = 0;
+    foreach ($dane as $item) {
+        $dnow = new DateTime();
+        $dzwrotu = new DateTime($item['dataZwrotu']);
+        $interval = $dzwrotu->diff($dnow);
+        $iloscDni = $interval->days;
+        $html .= "<tr>"
+              .'<td>'.(++$lp).'</td>'
+              ."<td>{$item['imie']}</td>"
+              . "<td>{$item['nazwisko']}</td>"
+              . "<td>{$item['tytul']}</td>"
+              . "<td>{$item['dataZwrotu']}</td>"
+              . "<td>{$iloscDni}</td></tr>";
+    }
+    return $html."</table>";
 }
