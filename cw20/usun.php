@@ -6,7 +6,6 @@ if(isset($_GET['id'])){
     echo $id;
     $ksiazkaid = getKsiazkaId($id);
     echo " ksiazkaid: ".$ksiazkaid;
-    usunCzytelnik($id,$ksiazkaid);
-    
+    usunCzytelnik($id,$ksiazkaid);    
 }
  header("Location: cw20.php");
