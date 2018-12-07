@@ -104,10 +104,12 @@ function czytToTable(array $dane){
 function usunCzytelnik($id,$ksiazkaid){
     $conn = getConnection();
     if($conn==null)       { return ;}
-    $sql1 = "DELETE FROM czytelnicy WHERE ksiazkaid={$id}";
-    $sql2 = "UPDATE ksiazki SET stan=b'1' where id={$ksiazkaid}";
+    $sql1 = "DELETE FROM czytelnicy WHERE id={$id}";
+    $sql2 = "UPDATE ksiazki SET stan=b'0' where id={$ksiazkaid}";
     $result1 = $conn->query($sql1);
     $result2 = $conn->query($sql2);
+    //var_dump($result1);
+   // var_dump($result2);
    $conn->close();
 }
 function getKsiazkaId($id){
